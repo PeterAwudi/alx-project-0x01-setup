@@ -2,7 +2,11 @@ import UserCard from "@/components/common/UserCard";
 import Header from "@/components/layout/Header";
 import { UserProps } from "@/interfaces";
 
-const Users: React.FC<{ posts: UserProps[] }> = ({ posts }) => {
+interface UsersPageProps {
+  posts: UserProps[];
+}
+
+const Users: React.FC<UsersPageProps> = ({ posts }) => {
   console.log(posts);
   return (
     <div className="flex flex-col h-screen">
@@ -12,7 +16,7 @@ const Users: React.FC<{ posts: UserProps[] }> = ({ posts }) => {
           <h1 className="text-2xl font-semibold">Users</h1>
         </div>
         <div className="grid grid-cols-3 gap-2">
-          {posts?.map((user: UserProps, key: number) => (
+          {posts.map((user: UserProps, key: number) => (
             <UserCard key={key} {...user} />
           ))}
         </div>
@@ -32,3 +36,4 @@ export async function getStaticProps() {
 }
 
 export default Users;
+
